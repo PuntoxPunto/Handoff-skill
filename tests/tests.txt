@@ -1,0 +1,49 @@
+# Tests
+
+## Test 1 - Run the Handoff MCP compatibility self-test [sanity]
+Viewport: desktop
+Covers: GET /api/mcp intentional rejection, POST /api/mcp legacy initialize, tools/list metadata, tools/call structured result, primary diagnostic workflow
+Description: Verifies the hosted MCP exposes a model-visible, noauth, read-only Handoff tool and can execute a safe tool call.
+
+Steps:
+1. Click "Run MCP self-test"
+2. Wait for the diagnostic to finish
+3. Read the visible status and detail
+
+Expected: The page shows "MCP endpoint ready" and says Handoff is noauth, model-visible, read-only, schema-backed, and responds to tools/call.
+
+## Test 2 - Surface an MCP backend failure visibly
+Viewport: desktop
+Covers: POST /api/mcp failure handling, user-visible diagnostic error guardrail
+Description: Verifies connector/backend failures do not produce a false-ready state.
+
+QA Faults:
+```json
+[
+  {
+    "method": "POST",
+    "path": "/api/mcp",
+    "status": 500,
+    "body_json": { "error": "simulated_mcp_failure" }
+  }
+]
+```
+
+Steps:
+1. Click "Run MCP self-test"
+2. Wait for the diagnostic to finish
+3. Read the visible status
+
+Expected: The page shows "MCP endpoint error" rather than "MCP endpoint ready".
+
+## Test 3 - Run the Handoff diagnostic on mobile
+Viewport: mobile
+Covers: mobile diagnostic workflow, responsive interaction, hosted MCP route family
+Description: Verifies the same compatibility workflow remains usable on a narrow viewport.
+
+Steps:
+1. Click "Run MCP self-test"
+2. Wait for the diagnostic to finish
+3. Read the visible final status
+
+Expected: A visible final MCP diagnostic result appears without requiring developer tools.

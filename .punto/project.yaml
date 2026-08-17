@@ -1,0 +1,9 @@
+schema_version: 1
+project_id: handoff-skill
+name: Handoff
+repository: PuntoxPunto/Handoff-skill
+canonical_ref: main
+project_type: chatgpt-plugin
+context_map: .punto/context-map.yaml
+pack_root: .punto/
+identity_node_id: handoff-skill-identity
