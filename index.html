@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handoff</title>
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+  <div id="app">
+    <main>
+      <p class="eyebrow">HANDOFF MCP</p>
+      <h1>Carry the work forward.</h1>
+      <p class="lead">A read-only ChatGPT tool that turns the current conversation into a clean handoff for another agent or human.</p>
+      <section class="card">
+        <div class="status"><span id="dot" class="dot pending"></span><strong id="status">Ready to test</strong></div>
+        <p id="detail">Runs a hosted MCP compatibility self-test without storing conversation data.</p>
+        <button id="test">Run MCP self-test</button>
+      </section>
+      <section class="card">
+        <h2>ChatGPT Web</h2>
+        <p>Register the hosted <code>/api/mcp</code> endpoint as a custom app, then invoke <code>@Handoff</code> in a normal chat.</p>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>
